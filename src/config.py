@@ -23,9 +23,9 @@ class TaiyoConfig(BaseSettings):
         
     class Corners:
         # Crop coordinates in format (top, left, bottom, right)
-        TL: Tuple[int, int, int, int] = (100, 100, 3600, 2600) # keep x1, y1
-        TR: Tuple[int, int, int, int] = (1872, 100, 5372, 2600) # keep y1, x2
-        BR: Tuple[int, int, int, int] = (1872, 1048, 5372, 3548) # keep x2, y2
-        BL: Tuple[int, int, int, int] = (100, 1048, 3600, 3548) # keep x1, y2
+        TL: Tuple[int, int, int, int] = (0, 0, 3472, 2648) # keep x1, y1
+        TR: Tuple[int, int, int, int] = (2000, 0, 5472, 2648) # keep y1, x2
+        BR: Tuple[int, int, int, int] = (2000, 1000, 5472, 3648) # keep x2, y2
+        BL: Tuple[int, int, int, int] = (0, 1000, 3472, 3648) # keep x1, y2
         DEBUG: bool = False  
         VIS_PATH: str = "./visualization"

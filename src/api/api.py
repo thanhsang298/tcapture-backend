@@ -31,15 +31,9 @@ async def merge(
         img_tr: UploadFile = File(...),
         img_br: UploadFile = File(...),
         img_bl: UploadFile = File(...),
-        path: str = Form(None),
+        path: str = Form(default="visualization/merge.jpg"),
     ):
     
-    if path is None:
-        logger.error(f'Path can not be None, please choose the path to save...')
-        return JSONResponse(
-            content={"error": "Path can not be None, please choose the path to save..."},
-            status_code=500
-        )
     images = []
     
     try:
