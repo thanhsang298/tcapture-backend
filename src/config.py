@@ -9,6 +9,7 @@ class TaiyoConfig(BaseSettings):
         PORT: int = 8000
         IMG_HEIGHT: int = 3648
         IMG_WIDTH: int = 5472
+        SAVE_METADATA: bool = False
 
     class Log:
         PATH: str = "app.log"

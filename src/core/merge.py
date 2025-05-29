@@ -11,13 +11,13 @@ import piexif
 class Merger:
     """Efficiently merge four corner images into a single panoramic image with optional metadata saving."""
 
-    def __init__(self, config, save_metadata: bool = True):
+    def __init__(self, config):
         self.config = config
         self.debug = getattr(self.config.Corners, 'DEBUG', False)
         self.vis_path = getattr(self.config.Corners, 'VIS_PATH', '')
         self.img_width = getattr(self.config.API, 'IMG_WIDTH', None)
         self.img_height = getattr(self.config.API, 'IMG_HEIGHT', None)
-        self.save_metadata = save_metadata
+        self.save_metadata = getattr(self.config.API, 'SAVE_METADATA', False)
         # Define crop rectangles (x1, y1, x2, y2) for each corner
         self.crops = {
             'tl': tuple(self.config.Corners.TL),
@@ -47,10 +47,7 @@ class Merger:
         rgb_canvas = cv2.cvtColor(canvas, cv2.COLOR_BGR2RGB)
         img = Image.fromarray(rgb_canvas)
         metadata = {
-            "TotalProcessingTime": f"{processing_time:.4f} seconds",
-            "SourceImages": "tl, tr, br, bl",
-            "MergedImageType": "Panoramic",
-            "Framework": "NumPy-Pillow"
+            "TotalProcessingTime": f"{processing_time:.4f} seconds"
         }
 
         ext = os.path.splitext(path)[1].lower()
